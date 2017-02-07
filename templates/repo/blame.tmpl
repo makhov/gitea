@@ -1,0 +1,76 @@
+{{template "base/head" .}}
+<div class="repository file list blame">
+	{{template "repo/header" .}}
+	<div class="ui container">
+		<div class="ui secondary menu">
+			{{template "repo/branch_dropdown" .}}
+			<div class="fitted item">
+				<div class="ui breadcrumb">
+					<a class="section" href="{{.RepoLink}}/src/{{EscapePound .BranchName}}">{{EllipsisString .Repository.Name 25}}</a>
+					{{ $n := len .TreeNames}}
+					{{ $l := Subtract $n 1}}
+					{{range $i, $v := .TreeNames}}
+						<div class="divider"> / </div>
+						{{if eq $i $l}}
+							<span class="active section">{{EllipsisString $v 15}}</span>
+						{{else}}
+						{{ $p := index $.Paths $i}}
+							<span class="section"><a href="{{EscapePound $.BranchLink}}/{{EscapePound $p}}">{{EllipsisString $v 15}}</a></span>
+						{{end}}
+					{{end}}
+				</div>
+			</div>
+		</div>
+		<div id="file-content" class="{{TabSizeClass .Editorconfig .FileName}}">
+			<h4 class="ui top attached header">
+				<i class="file text outline icon ui left"></i>
+				<strong>{{.FileName}}</strong> <span class="text grey normal"></span>
+				<div class="ui right file-actions">
+					<div class="ui buttons">
+						<a class="ui button"
+						   href="{{.RepoLink}}/commits/{{EscapePound .BranchName}}/{{EscapePound .TreePath}}">{{.i18n.Tr "repo.file_history"}}</a>
+						<a class="ui button" href="{{.RepoLink}}/src/{{EscapePound .BranchName}}/{{EscapePound .TreePath}}">{{.i18n.Tr "repo.file_normal"}}</a>
+					</div>
+				</div>
+			</h4>
+
+			<div class="ui attached table segment">
+				<div class="file-view code-view has-emoji">
+					<table>
+						<tbody>
+						<tr>
+							{{if .IsFileTooLarge}}
+							<td><strong>{{.i18n.Tr "repo.file_too_large"}}</strong></td>
+							{{else}}
+							<td class="lines-blame">
+								<ol class="linenums">
+									{{range .Blame.Lines}}
+										<li>
+											<a href="{{$.RepoLink}}/commit/{{.Commit.ID.String}}">
+												{{ShortSha .Commit.ID.String}}
+											</a>
+											({{.Commit.Author.Name}})
+											{{TimeSince .Commit.Committer.When $.Lang}}
+										</li>
+									{{end}}
+									{{.Commits}}
+								</ol>
+							</td>
+							<td class="lines-num">
+								{{range .Blame.Lines}}
+								<span id="L{{.Num}}">{{.Num}}</span>
+								{{end}}
+							</td>
+							<td class="lines-code"><pre><code class="{{.HighlightClass}} hljs"><ol class="linenums">{{.FileContent}}</ol></code></pre></td>
+							{{end}}
+						</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+
+
+	</div>
+</div>
+{{template "base/footer" .}}

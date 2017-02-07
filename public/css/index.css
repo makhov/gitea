@@ -1336,42 +1336,63 @@ footer .ui.language .menu {
   cursor: pointer;
   display: block;
 }
+.repository.file.list #file-content .code-view .lines-blame {
+  width: 30%;
+}
+.repository.file.list #file-content .code-view .lines-blame .time-since {
+  display: block;
+  float: right;
+  padding-right: 5px;
+}
 .repository.file.list #file-content .code-view .lines-num,
+.repository.file.list #file-content .code-view .lines-blame,
 .repository.file.list #file-content .code-view .lines-code {
   padding: 0;
 }
 .repository.file.list #file-content .code-view .lines-num pre,
+.repository.file.list #file-content .code-view .lines-blame pre,
 .repository.file.list #file-content .code-view .lines-code pre,
 .repository.file.list #file-content .code-view .lines-num ol,
+.repository.file.list #file-content .code-view .lines-blame ol,
 .repository.file.list #file-content .code-view .lines-code ol,
 .repository.file.list #file-content .code-view .lines-num .hljs,
+.repository.file.list #file-content .code-view .lines-blame .hljs,
 .repository.file.list #file-content .code-view .lines-code .hljs {
   background-color: white;
   margin: 0;
   padding: 0 !important;
 }
 .repository.file.list #file-content .code-view .lines-num pre li,
+.repository.file.list #file-content .code-view .lines-blame pre li,
 .repository.file.list #file-content .code-view .lines-code pre li,
 .repository.file.list #file-content .code-view .lines-num ol li,
+.repository.file.list #file-content .code-view .lines-blame ol li,
 .repository.file.list #file-content .code-view .lines-code ol li,
 .repository.file.list #file-content .code-view .lines-num .hljs li,
+.repository.file.list #file-content .code-view .lines-blame .hljs li,
 .repository.file.list #file-content .code-view .lines-code .hljs li {
   display: inline-block;
   width: 100%;
 }
 .repository.file.list #file-content .code-view .lines-num pre li.active,
+.repository.file.list #file-content .code-view .lines-blame pre li.active,
 .repository.file.list #file-content .code-view .lines-code pre li.active,
 .repository.file.list #file-content .code-view .lines-num ol li.active,
+.repository.file.list #file-content .code-view .lines-blame ol li.active,
 .repository.file.list #file-content .code-view .lines-code ol li.active,
 .repository.file.list #file-content .code-view .lines-num .hljs li.active,
+.repository.file.list #file-content .code-view .lines-blame .hljs li.active,
 .repository.file.list #file-content .code-view .lines-code .hljs li.active {
   background: #ffffdd;
 }
 .repository.file.list #file-content .code-view .lines-num pre li:before,
+.repository.file.list #file-content .code-view .lines-blame pre li:before,
 .repository.file.list #file-content .code-view .lines-code pre li:before,
 .repository.file.list #file-content .code-view .lines-num ol li:before,
+.repository.file.list #file-content .code-view .lines-blame ol li:before,
 .repository.file.list #file-content .code-view .lines-code ol li:before,
 .repository.file.list #file-content .code-view .lines-num .hljs li:before,
+.repository.file.list #file-content .code-view .lines-blame .hljs li:before,
 .repository.file.list #file-content .code-view .lines-code .hljs li:before {
   content: ' ';
 }
